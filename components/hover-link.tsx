@@ -2,37 +2,38 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import type { ReactNode } from "react";
 import { ScrambleText } from "./scramble-text";
 
-export function BracketLink({
+/**
+ * A plain content link (Substack post titles, etc) with the same
+ * decode-on-hover text as every other link on the site, but no
+ * bracket or arrow decoration — just the underline it already had.
+ */
+export function HoverLink({
   href,
   external,
-  active,
+  className,
   children,
 }: {
   href: string;
   external?: boolean;
-  active?: boolean;
-  children: ReactNode;
+  className?: string;
+  children: string;
 }) {
   const [hovering, setHovering] = useState(false);
-  const label = typeof children === "string" ? children : null;
 
   return (
     <Link
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      aria-current={active ? "page" : undefined}
-      aria-label={label ?? undefined}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
       onFocus={() => setHovering(true)}
       onBlur={() => setHovering(false)}
-      className={`bracket-link text-sm ${active ? "text-fg" : "text-fg-muted"}`}
+      className={className ?? "hover:underline"}
     >
-      {label ? <ScrambleText text={label} active={hovering} /> : children}
+      <ScrambleText text={children} active={hovering} />
     </Link>
   );
 }

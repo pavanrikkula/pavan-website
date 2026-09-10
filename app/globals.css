@@ -3,16 +3,19 @@
 /* ---------------------------------------------------------------- */
 /* Design tokens                                                    */
 /*                                                                  */
-/* A two-tone, old-web palette: one deep, saturated blue and one    */
-/* near-white, plus a single muted tint of the same blue for        */
-/* secondary text. No accent hue — the pixel type and bracket links */
-/* carry the personality instead of a color accent.                 */
+/* Dark teal/green palette, tuned to match Mandelbrot's Footnotes    */
+/* (the Substack this site shares a visual world with): a deep,     */
+/* desaturated teal-black background, warm off-white text, a muted  */
+/* blue-green for secondary text, subtle teal borders, and one      */
+/* restrained green accent used sparingly — footnote marks, the     */
+/* sound toggle, small interactive systems. Never for body text.    */
 /* ---------------------------------------------------------------- */
 :root {
-  --color-bg: #000758;
-  --color-fg: #f4f4f2;
-  --color-fg-muted: #8489c4;
-  --color-hairline: #2b3690;
+  --color-bg: #0b1e1a;
+  --color-fg: #f2ede0;
+  --color-fg-muted: #79988f;
+  --color-hairline: #1d332d;
+  --color-accent: #5fb98a;
 }
 
 @theme inline {
@@ -20,6 +23,7 @@
   --color-fg: var(--color-fg);
   --color-fg-muted: var(--color-fg-muted);
   --color-hairline: var(--color-hairline);
+  --color-accent: var(--color-accent);
 
   --font-mono: var(--font-mono);
   --font-pixel: var(--font-pixel);
@@ -117,12 +121,13 @@ body {
   border-color: var(--color-fg);
 }
 
-/* A blinking terminal-style cursor, used once, sparingly. */
+/* A blinking terminal-style cursor, used once, sparingly — one of the
+   few places the accent green appears. */
 .terminal-cursor {
   display: inline-block;
   width: 0.55em;
   margin-left: 0.15em;
-  background: var(--color-fg);
+  background: var(--color-accent);
   animation: blink 1.1s steps(1) infinite;
 }
 

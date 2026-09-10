@@ -2,37 +2,37 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import type { ReactNode } from "react";
 import { ScrambleText } from "./scramble-text";
 
-export function BracketLink({
+/**
+ * The plainer content-link style (underline, not brackets) — "more →",
+ * "the shelf →", etc. Shares the same decode-on-hover language as
+ * BracketLink; the arrow itself stays put so the motion reads as the
+ * word resolving, not the whole line jittering.
+ */
+export function ArrowLink({
   href,
   external,
-  active,
   children,
 }: {
   href: string;
   external?: boolean;
-  active?: boolean;
-  children: ReactNode;
+  children: string;
 }) {
   const [hovering, setHovering] = useState(false);
-  const label = typeof children === "string" ? children : null;
 
   return (
     <Link
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      aria-current={active ? "page" : undefined}
-      aria-label={label ?? undefined}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
       onFocus={() => setHovering(true)}
       onBlur={() => setHovering(false)}
-      className={`bracket-link text-sm ${active ? "text-fg" : "text-fg-muted"}`}
+      className="arrow-link"
     >
-      {label ? <ScrambleText text={label} active={hovering} /> : children}
+      <ScrambleText text={children} active={hovering} /> <span aria-hidden="true">→</span>
     </Link>
   );
 }

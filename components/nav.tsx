@@ -6,7 +6,7 @@ import { BracketLink } from "./bracket-link";
 
 const sectionLinks = [
   { href: "/writing", label: "writing" },
-  { href: "/books", label: "books" },
+  { href: "/reading", label: "reading" },
   { href: "/about", label: "about" },
 ];
 

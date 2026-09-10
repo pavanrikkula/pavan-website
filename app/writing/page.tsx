@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getSubstackPosts } from "@/lib/substack";
 import { Reveal } from "@/components/reveal";
+import { HoverLink } from "@/components/hover-link";
+import { ArrowLink } from "@/components/arrow-link";
 
 export const metadata: Metadata = {
   title: "Writing — Pavan Rikkula",
@@ -25,9 +27,9 @@ export default async function WritingPage() {
             <p className="text-fg-muted">
               Couldn&rsquo;t load recent posts just now — read everything
               directly on{" "}
-              <a href={ARCHIVE_URL} className="arrow-link">
+              <HoverLink href={ARCHIVE_URL} external className="arrow-link">
                 Substack
-              </a>
+              </HoverLink>
               .
             </p>
           </Reveal>
@@ -59,14 +61,11 @@ export default async function WritingPage() {
 
         {posts.length > 0 && (
           <Reveal delay={0.1}>
-            <a
-              href={ARCHIVE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="arrow-link mt-10 inline-block text-sm"
-            >
-              more →
-            </a>
+            <div className="mt-10">
+              <ArrowLink href={ARCHIVE_URL} external>
+                more
+              </ArrowLink>
+            </div>
           </Reveal>
         )}
       </div>

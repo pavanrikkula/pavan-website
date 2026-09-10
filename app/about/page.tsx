@@ -15,11 +15,6 @@ export default function AboutPage() {
         </h1>
 
         <div className="mt-8 max-w-md space-y-5 text-sm leading-relaxed sm:text-base">
-          <p className="border border-dashed border-hairline px-4 py-3 text-xs text-fg-muted">
-            Placeholder — replace this with your own words. Short and
-            plainly written works better here than a résumé.
-          </p>
-
           <p>Pavan Rikkula.</p>
           <p>
             I write, I read, and I&rsquo;m generally trying to figure a few
